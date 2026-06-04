@@ -1,6 +1,6 @@
 export function Hero() {
   return (
-    <section id="home" className="relative bg-cover bg-center bg-no-repeat py-8 md:py-12 overflow-hidden" style={{backgroundImage: 'url("/images/hero-bg.jpg")'}}>
+    <section id="home" className="relative bg-cover bg-center bg-no-repeat py-8 md:py-12 overflow-hidden" style={{backgroundImage: 'url("./images/hero-bg.jpg")'}}>
       {/* Dark overlay for text readability */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#003366]/95 via-[#002244]/90 to-[#003366]/95"></div>
       
