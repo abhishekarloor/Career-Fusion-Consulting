@@ -1,0 +1,31 @@
+<svg viewBox="0 0 540 440" xmlns="http://www.w3.org/2000/svg">
+  <!-- Define gradients -->
+  <defs>
+    <linearGradient id="arrowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#003366;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00A4CC;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main arrow shape with wave -->
+  <path d="M 170 280 Q 220 200 280 240 L 340 140 L 380 200 L 310 250 Q 360 180 400 220 L 420 100 L 450 160" 
+        stroke="url(#arrowGradient)" 
+        stroke-width="35" 
+        fill="none" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"/>
+  
+  <!-- Arrow point star -->
+  <g transform="translate(380, 80)">
+    <polygon points="0,-20 5,-5 20,-2 10,8 12,23 0,17 -12,23 -10,8 -20,-2 -5,-5" 
+             fill="url(#arrowGradient)"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="70" y="360" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#003366">
+    CAREER FUSION
+  </text>
+  <text x="145" y="410" font-family="Arial, sans-serif" font-size="28" font-weight="300" fill="#00A4CC" letter-spacing="2">
+    CONSULTING
+  </text>
+</svg>
