@@ -78,7 +78,7 @@ export function Contact() {
                   name="enquiry"
                   value={formData.enquiry}
                   onChange={handleChange}
-                  rows="5"
+                  rows={5}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00A4CC]"
                   placeholder="Tell us about your recruitment needs..."
                 ></textarea>
