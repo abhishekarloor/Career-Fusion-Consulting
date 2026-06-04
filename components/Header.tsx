@@ -12,10 +12,10 @@ export function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity">
           <img 
-            src="/images/career-fusion-logo.png" 
+            src="./images/career-fusion-logo.png" 
             alt="Career Fusion Consulting" 
             className="h-40 w-auto"
-          />
+            />
         </Link>
 
         {/* Desktop Navigation */}
