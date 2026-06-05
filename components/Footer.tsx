@@ -8,7 +8,7 @@ export function Footer() {
           {/* Brand */}
           <div>
             <img 
-              src="/images/career-fusion-logo.png" 
+              src="./images/career-fusion-logo.png" 
               alt="Career Fusion Consulting" 
               className="h-24 w-auto mb-4"
             />
@@ -70,7 +70,7 @@ export function Footer() {
         <div className="border-t border-blue-700 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-blue-100 text-sm mb-4 md:mb-0">
-              © 2024 Career Fusion Consulting. All rights reserved.
+              © 2026 Career Fusion Consulting. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm text-blue-100">
               <Link href="#" className="hover:text-[#00A4CC] transition">Privacy Policy</Link>
