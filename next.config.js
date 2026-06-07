@@ -3,10 +3,13 @@
 
 // module.exports = nextConfig
 /** @type {import('next').NextConfig} */
+const repoBasePath = '/Career-Fusion-Consulting'
+const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH?.trim() || repoBasePath
+
 const nextConfig = {
   output: 'export',
-  basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
-  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || '',
+  basePath: publicBasePath,
+  assetPrefix: publicBasePath,
   images: {
     unoptimized: true, // GitHub Pages doesn't support Next.js default image optimization
   },
