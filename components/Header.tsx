@@ -40,7 +40,7 @@ export function Header() {
           <nav className="flex items-center justify-between h-24 pl-0 pr-4 sm:pr-6 lg:pl-0 lg:pr-8">
           <Link href="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity -ml-6">
             <img
-              src="/images/career-fusion-logo.png"
+              src="./images/career-fusion-logo.png"
               alt="Career Fusion Consulting"
               className="h-28 md:h-32 w-auto max-w-[260px] object-contain filter brightness-90 contrast-110 saturate-110"
             />
