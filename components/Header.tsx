@@ -1,71 +1,170 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
+import { ContactForm } from '@/components/ContactForm'
+
+const navItems = [
+  { label: 'Home', href: '/#home', section: '#home' },
+  { label: 'Services', href: '/#services', section: '#services' },
+  { label: 'Expertise', href: '/#industry-expertise', section: '#industry-expertise' },
+  { label: 'Contact', href: '/#contact', section: '#contact' },
+]
 
 export function Header() {
+  const pathname = usePathname()
+  const [hash, setHash] = useState('')
   const [menuOpen, setMenuOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  useEffect(() => {
+    const updateHash = () => setHash(window.location.hash)
+    updateHash()
+    window.addEventListener('hashchange', updateHash)
+    return () => window.removeEventListener('hashchange', updateHash)
+  }, [])
+
+  const isActive = (href: string, section: string) => {
+    if (pathname !== '/') return false
+    if (section === '#home') {
+      return hash === '' || hash === '#home'
+    }
+    return hash === section
+  }
 
   return (
-    <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50 py-0">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-0 flex justify-between items-center">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity">
-          <img 
-            src="./images/career-fusion-logo.png" 
-            alt="Career Fusion Consulting" 
-            className="h-40 w-auto"
+    <>
+      <header className="bg-white/95 border border-[#00A4CC] shadow-md backdrop-blur-xl sticky top-0 z-40">
+        <div className="max-w-7xl mx-auto px-0">
+          <nav className="flex items-center justify-between h-24 pl-0 pr-4 sm:pr-6 lg:pl-0 lg:pr-8">
+          <Link href="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity -ml-6">
+            <img
+              src="/images/career-fusion-logo.png"
+              alt="Career Fusion Consulting"
+              className="h-28 md:h-32 w-auto max-w-[260px] object-contain filter brightness-90 contrast-110 saturate-110"
             />
-        </Link>
+          </Link>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex gap-8 items-center">
-          <Link href="#home" className="text-gray-700 hover:text-[#003366] font-medium transition">
-            Home
-          </Link>
-          <Link href="#services" className="text-gray-700 hover:text-[#003366] font-medium transition">
-            Services
-          </Link>
-          <Link href="#about" className="text-gray-700 hover:text-[#003366] font-medium transition">
-            About Us
-          </Link>
-          <Link href="#expertise" className="text-gray-700 hover:text-[#003366] font-medium transition">
-            Expertise
-          </Link>
-          <Link href="#contact" className="text-gray-700 hover:text-[#003366] font-medium transition">
-            Contact
-          </Link>
-        </div>
+          <div className="hidden md:flex items-center gap-3 ml-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                onClick={() => setHash(item.section)}
+                className={`inline-flex items-center justify-center min-w-[130px] px-6 py-3 text-sm font-semibold uppercase rounded-none transition ${
+                  isActive(item.href, item.section)
+                    ? 'bg-[#00A4CC] text-white shadow-sm ring-1 ring-[#00A4CC]'
+                    : 'text-slate-700 hover:text-white hover:bg-[#00A4CC]'
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
 
-        {/* CTA Button */}
-        <div className="hidden md:flex gap-4">
-          <button className="bg-[#00A4CC] hover:bg-[#0091B3] text-white px-6 py-2 rounded-lg font-semibold transition-colors">
-            Get in Touch
+            <div className="relative group">
+              <button className="inline-flex items-center gap-1 min-w-[130px] justify-center rounded-none px-6 py-3 text-sm font-semibold uppercase text-slate-700 hover:text-white hover:bg-[#00A4CC] transition">
+                About Us
+                <span className="text-[10px] leading-none">▾</span>
+              </button>
+              <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 absolute left-0 top-full mt-3 w-52 rounded-none border border-[#00A4CC]/30 bg-white shadow-lg py-2">
+                <Link href="/#about" className="block rounded-none px-4 py-3 text-sm font-semibold uppercase text-slate-700 hover:bg-[#00A4CC] hover:text-white transition">
+                  About Career Fusion
+                </Link>
+                <Link href="/our-leadership" className="block rounded-none px-4 py-3 text-sm font-semibold uppercase text-slate-700 hover:bg-[#00A4CC] hover:text-white transition">
+                  Our Leadership
+                </Link>
+                <Link href="/#testimonials" className="block rounded-none px-4 py-3 text-sm font-semibold uppercase text-slate-700 hover:bg-[#00A4CC] hover:text-white transition">
+                  Partner Testimonials
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="hidden md:flex items-center gap-4">
+            <button
+              type="button"
+              onClick={() => setIsModalOpen(true)}
+              className="bg-[#00A4CC] hover:bg-[#0091B3] text-white px-6 py-3 rounded-none font-semibold text-sm transition-colors inline-flex items-center justify-center"
+            >
+              Get in Touch
+            </button>
+          </div>
+
+          <button
+            className="md:hidden text-slate-700 text-2xl focus:outline-none"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            ☰
           </button>
-        </div>
+        </nav>
+      </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-gray-700 text-2xl"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          ☰
-        </button>
-      </nav>
-
-      {/* Mobile Navigation */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200 px-4 py-4 flex flex-col gap-4">
-          <Link href="#home" className="text-gray-700 hover:text-[#003366] font-medium">Home</Link>
-          <Link href="#services" className="text-gray-700 hover:text-[#003366] font-medium">Services</Link>
-          <Link href="#about" className="text-gray-700 hover:text-[#003366] font-medium">About Us</Link>
-          <Link href="#expertise" className="text-gray-700 hover:text-[#003366] font-medium">Expertise</Link>
-          <Link href="#contact" className="text-gray-700 hover:text-[#003366] font-medium">Contact</Link>
-          <button className="bg-[#00A4CC] hover:bg-[#0091B3] text-white w-full py-2 rounded-lg font-semibold transition-colors">
+        <div className="md:hidden bg-white border-t border-slate-200 px-4 py-4 space-y-3">
+          {navItems.map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              onClick={() => setHash(item.section)}
+              className={`block rounded-none px-4 py-3 text-slate-700 hover:text-white hover:bg-[#00A4CC] font-medium transition ${
+                isActive(item.href, item.section) ? 'bg-[#00A4CC] text-white' : ''
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
+          <div className="border-t border-slate-100 pt-3">
+            <div className="text-slate-900 font-semibold mb-2">About Us</div>
+            <Link href="/#about" className="block rounded-none px-4 py-3 text-sm font-semibold text-slate-700 border border-transparent hover:text-white hover:bg-[#00A4CC] hover:border-[#00A4CC] transition">
+              About Career Fusion
+            </Link>
+            <Link href="/our-leadership" className="block rounded-none px-4 py-3 text-sm font-semibold text-slate-700 border border-transparent hover:text-white hover:bg-[#00A4CC] hover:border-[#00A4CC] transition">
+              Our Leadership
+            </Link>
+            <Link href="/#testimonials" className="block rounded-none px-4 py-3 text-sm font-semibold text-slate-700 border border-transparent hover:text-white hover:bg-[#00A4CC] hover:border-[#00A4CC] transition">
+              Partner Testimonials
+            </Link>
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              setMenuOpen(false)
+              setIsModalOpen(true)
+            }}
+            className="w-full bg-[#00A4CC] hover:bg-[#0091B3] text-white py-3 rounded-none font-semibold transition-colors"
+          >
             Get in Touch
           </button>
         </div>
       )}
-    </header>
+
+      </header>
+
+      {isModalOpen && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-slate-900/70 p-4">
+          <div className="w-full max-w-2xl max-h-[calc(100vh-4rem)] rounded-3xl bg-white shadow-2xl overflow-hidden">
+            <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4">
+              <div>
+                <p className="text-sm uppercase font-semibold tracking-[0.2em] text-[#00A4CC]">Contact Us</p>
+                <h3 className="text-2xl font-bold text-[#003366]">Send us a message</h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsModalOpen(false)}
+                className="text-slate-500 hover:text-slate-900 text-3xl leading-none"
+                aria-label="Close contact modal"
+              >
+                ×
+              </button>
+            </div>
+            <div className="px-4 py-3">
+              <ContactForm onClose={() => setIsModalOpen(false)} />
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   )
 }

@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export function Clients() {
   const clients = [
     { name: 'DP World', icon: '🌍' },
@@ -47,9 +49,9 @@ export function Clients() {
           <p className="text-lg text-gray-700 mb-6">
             <span className="font-bold text-[#003366]">100+ client relationships</span> spanning multiple industries and geographies
           </p>
-          <button className="px-8 py-3 bg-[#003366] text-white font-bold rounded-lg hover:bg-[#00A4CC] transition-all duration-300 shadow-lg hover:shadow-2xl">
+          <Link href="/#contact" className="inline-flex px-8 py-3 bg-[#003366] text-white font-bold rounded-lg hover:bg-[#00A4CC] transition-all duration-300 shadow-lg hover:shadow-2xl">
             Become Our Partner
-          </button>
+          </Link>
         </div>
       </div>
     </section>

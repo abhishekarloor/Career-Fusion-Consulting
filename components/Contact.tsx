@@ -1,30 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { ContactForm } from '@/components/ContactForm'
 
 export function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    enquiry: ''
-  })
-
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }))
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log('Form Data:', formData)
-    alert('Thank you for your enquiry! We will get back to you soon.')
-    setFormData({ name: '', email: '', phone: '', enquiry: '' })
-  }
-
   return (
     <section id="contact" className="py-16 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -36,60 +14,7 @@ export function Contact() {
         <div className="grid md:grid-cols-2 gap-12">
           {/* Form */}
           <div>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label className="block text-sm font-semibold text-[#003366] mb-2">Full Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00A4CC]"
-                  placeholder="Your name"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-[#003366] mb-2">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00A4CC]"
-                  placeholder="your.email@example.com"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-[#003366] mb-2">Phone</label>
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00A4CC]"
-                  placeholder="+91 XXXXX XXXXX"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-[#003366] mb-2">Your Enquiry</label>
-                <textarea
-                  name="enquiry"
-                  value={formData.enquiry}
-                  onChange={handleChange}
-                  rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00A4CC]"
-                  placeholder="Tell us about your recruitment needs..."
-                ></textarea>
-              </div>
-              <button
-                type="submit"
-                className="w-full bg-[#003366] text-white font-semibold py-3 rounded-lg hover:bg-[#002244] transition-colors"
-              >
-                Send Enquiry
-              </button>
-            </form>
+            <ContactForm />
           </div>
 
           {/* Contact Info */}
@@ -111,6 +36,23 @@ export function Contact() {
                     <p className="text-gray-600">+91 XXXXX XXXXX</p>
                   </div>
                 </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-[#00A4CC] text-2xl">📍</span>
+                  <div>
+                    <p className="font-semibold text-[#003366]">Office Address</p>
+                    <p className="text-gray-600">No.1053, 2nd block, SMV Layout,</p>
+                    <p className="text-gray-600">Bengaluru - 560060</p>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-6 overflow-hidden rounded-3xl border border-slate-200 shadow-sm">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.4717337123915!2d77.59711257482733!3d12.999216091520783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae12f29de32d9f%3A0x9df4f60d4d7bf77f!2sSMV%20Layout%2C%20Bengaluru%2C%20Karnataka%20560060!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                  className="h-60 w-full"
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
               </div>
             </div>
 

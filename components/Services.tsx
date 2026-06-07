@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export function Services() {
   const services = [
     {
@@ -84,7 +86,7 @@ export function Services() {
               <div className={`h-2 bg-gradient-to-r ${service.color}`}></div>
 
               {/* Icon background */}
-              <div className={`h-24 bg-gradient-to-br ${service.color} opacity-10 group-hover:opacity-20 transition-all duration-300 flex items-center justify-center`}>
+              <div className={`h-24 bg-gradient-to-br ${service.color} opacity-30 group-hover:opacity-50 transition-all duration-300 flex items-center justify-center`}>
                 <span className="text-5xl group-hover:scale-110 transition-transform duration-300">
                   {service.icon}
                 </span>
@@ -98,9 +100,9 @@ export function Services() {
                 <p className="text-gray-600 text-sm leading-relaxed mb-4">
                   {service.description}
                 </p>
-                <button className="text-[#00A4CC] font-bold text-sm hover:text-[#003366] transition-colors flex items-center gap-2 group-hover:gap-3">
+                <Link href="/#contact" className="inline-flex text-[#00A4CC] font-bold text-sm hover:text-[#003366] transition-colors flex items-center gap-2 group-hover:gap-3">
                   Explore <span className="group-hover:translate-x-1 transition-transform">→</span>
-                </button>
+                </Link>
               </div>
 
               {/* Hover effect corner */}
@@ -114,9 +116,9 @@ export function Services() {
           <p className="text-lg text-gray-700 mb-6">
             Looking for a specific talent solution?
           </p>
-          <button className="px-8 py-3 bg-[#003366] text-white font-bold rounded-lg hover:bg-[#00A4CC] transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105">
+          <Link href="/#industry-expertise" className="inline-flex px-8 py-3 bg-[#003366] text-white font-bold rounded-lg hover:bg-[#00A4CC] transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105">
             View All Services
-          </button>
+          </Link>
         </div>
       </div>
     </section>

@@ -44,7 +44,7 @@ export function Testimonials() {
   }, [testimonials.length])
 
   return (
-    <section className="py-20 md:py-32 bg-white relative overflow-hidden">
+    <section id="testimonials" className="py-20 md:py-32 bg-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 right-0 w-96 h-96 bg-[#003366] rounded-full mix-blend-multiply filter blur-3xl opacity-5"></div>

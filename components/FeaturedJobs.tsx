@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export function FeaturedJobs() {
   const steps = [
     {
@@ -33,7 +35,7 @@ export function FeaturedJobs() {
   ]
 
   return (
-    <section id="services" className="py-16 md:py-24 bg-gradient-to-br from-[#f0f9fc] to-white">
+    <section id="process" className="py-16 md:py-24 bg-gradient-to-br from-[#f0f9fc] to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="border-l-4 border-[#00A4CC] pl-6 mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-[#003366] mb-4">The Fusion Search Process</h2>
@@ -74,9 +76,9 @@ export function FeaturedJobs() {
           <p className="text-lg text-gray-700 mb-6">
             Ready to find your perfect talent match? Let's start the fusion process.
           </p>
-          <button className="inline-block bg-[#003366] text-white font-semibold px-8 py-3 rounded-lg hover:bg-[#002244] transition-colors">
+          <Link href="/#contact" className="inline-flex bg-[#003366] text-white font-semibold px-8 py-3 rounded-lg hover:bg-[#002244] transition-colors">
             Get Started
-          </button>
+          </Link>
         </div>
       </div>
     </section>
