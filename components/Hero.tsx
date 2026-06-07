@@ -1,8 +1,9 @@
 import Link from 'next/link'
+import { assetPath } from '@/lib/assetPath'
 
 export function Hero() {
   return (
-    <section id="home" className="relative bg-cover bg-center bg-no-repeat py-8 md:py-12 overflow-hidden min-h-[calc(100vh-80px)]" style={{backgroundImage: "url('./images/hero-bg.jpg')"}}>
+    <section id="home" className="relative bg-cover bg-center bg-no-repeat py-8 md:py-12 overflow-hidden min-h-[calc(100vh-80px)]" style={{backgroundImage: `url('${assetPath('images/hero-bg.jpg')}')`}}>
       {/* Dark overlay for text readability */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#003366]/70 via-[#002244]/70 to-[#003366]/70"></div>
       

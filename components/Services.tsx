@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { routePath } from '@/lib/routePath'
 
 export function Services() {
   const services = [
@@ -100,7 +101,7 @@ export function Services() {
                 <p className="text-gray-600 text-sm leading-relaxed mb-4">
                   {service.description}
                 </p>
-                <Link href="/#contact" className="inline-flex text-[#00A4CC] font-bold text-sm hover:text-[#003366] transition-colors flex items-center gap-2 group-hover:gap-3">
+                <Link href={routePath('#contact')} className="inline-flex text-[#00A4CC] font-bold text-sm hover:text-[#003366] transition-colors flex items-center gap-2 group-hover:gap-3">
                   Explore <span className="group-hover:translate-x-1 transition-transform">→</span>
                 </Link>
               </div>
@@ -116,7 +117,7 @@ export function Services() {
           <p className="text-lg text-gray-700 mb-6">
             Looking for a specific talent solution?
           </p>
-          <Link href="/#industry-expertise" className="inline-flex px-8 py-3 bg-[#003366] text-white font-bold rounded-lg hover:bg-[#00A4CC] transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105">
+          <Link href={routePath('#industry-expertise')} className="inline-flex px-8 py-3 bg-[#003366] text-white font-bold rounded-lg hover:bg-[#00A4CC] transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105">
             View All Services
           </Link>
         </div>

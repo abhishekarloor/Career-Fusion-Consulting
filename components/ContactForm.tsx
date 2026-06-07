@@ -60,6 +60,9 @@ export function ContactForm({ onClose }: ContactFormProps) {
 
       setStatus('success')
       setFormData({ name: '', email: '', phone: '', enquiry: '', _honey: '' })
+      if (onClose) {
+        onClose()
+      }
     } catch (error) {
       console.error('Contact form send error:', error)
       setStatus('error')

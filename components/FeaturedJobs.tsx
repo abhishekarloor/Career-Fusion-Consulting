@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { routePath } from '@/lib/routePath'
 
 export function FeaturedJobs() {
   const steps = [
@@ -74,9 +75,9 @@ export function FeaturedJobs() {
         {/* CTA Section */}
         <div className="mt-16 text-center">
           <p className="text-lg text-gray-700 mb-6">
-            Ready to find your perfect talent match? Let's start the fusion process.
+            Ready to find your perfect talent match? Let&apos;s start the fusion process.
           </p>
-          <Link href="/#contact" className="inline-flex bg-[#003366] text-white font-semibold px-8 py-3 rounded-lg hover:bg-[#002244] transition-colors">
+          <Link href={routePath('#contact')} className="inline-flex bg-[#003366] text-white font-semibold px-8 py-3 rounded-lg hover:bg-[#002244] transition-colors">
             Get Started
           </Link>
         </div>

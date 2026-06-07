@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
+import { assetPath } from '@/lib/assetPath'
 
 export default function OurLeadership() {
   return (
@@ -22,7 +23,7 @@ export default function OurLeadership() {
             {
               name: 'Madhushree A R',
               title: 'Director',
-              image: './images/madhushree-ar.jpg',
+              image: 'images/madhushree-ar.jpg',
               qualification: 'BCom, MBA',
               contact: '8904491648',
               description: 'Madhushree leads the strategic direction and client engagement for Career Fusion, bringing strong leadership and business expertise to every partnership.',
@@ -30,7 +31,7 @@ export default function OurLeadership() {
             {
               name: 'Karthik A R',
               title: 'Co-Director',
-              image: './images/karthik-ar.jpg',
+              image: 'images/karthik-ar.jpg',
               qualification: 'BSc, MBA',
               contact: '9663479949',
               description: 'Karthik oversees operations and talent strategy, ensuring smooth delivery and high-value outcomes for our clients and candidates.',
@@ -38,7 +39,7 @@ export default function OurLeadership() {
           ].map((leader) => (
             <article key={leader.name} className="overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-sm">
               <img
-                src={`./images/${leader.image}`}
+                src={assetPath(leader.image)}
                 alt={leader.name}
                 className="h-80 md:h-[420px] w-full object-cover object-top"
               />

@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import { assetPath } from '@/lib/assetPath'
+import { routePath } from '@/lib/routePath'
 
 export function Footer() {
   return (
@@ -8,7 +10,7 @@ export function Footer() {
           {/* Brand */}
           <div>
             <img 
-              src="./images/career-fusion-logo.png" 
+              src={assetPath('images/career-fusion-logo.png')} 
               alt="Career Fusion Consulting" 
               className="h-24 w-auto mb-4"
             />
@@ -21,18 +23,18 @@ export function Footer() {
           <div>
             <h4 className="font-bold text-lg mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <li>
-                <Link href="#home" className="text-blue-100 hover:text-[#00A4CC] transition">Home</Link>
-              </li>
-              <li>
-                <Link href="#services" className="text-blue-100 hover:text-[#00A4CC] transition">Services</Link>
-              </li>
-              <li>
-                <Link href="#about" className="text-blue-100 hover:text-[#00A4CC] transition">About</Link>
-              </li>
-              <li>
-                <Link href="#contact" className="text-blue-100 hover:text-[#00A4CC] transition">Contact</Link>
-              </li>
+                <li>
+                  <Link href={routePath('#home')} className="text-blue-100 hover:text-[#00A4CC] transition">Home</Link>
+                </li>
+                <li>
+                  <Link href={routePath('#services')} className="text-blue-100 hover:text-[#00A4CC] transition">Services</Link>
+                </li>
+                <li>
+                  <Link href={routePath('#about')} className="text-blue-100 hover:text-[#00A4CC] transition">About</Link>
+                </li>
+                <li>
+                  <Link href={routePath('#contact')} className="text-blue-100 hover:text-[#00A4CC] transition">Contact</Link>
+                </li>
             </ul>
           </div>
 

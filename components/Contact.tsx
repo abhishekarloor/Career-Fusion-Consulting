@@ -7,7 +7,7 @@ export function Contact() {
     <section id="contact" className="py-16 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="border-l-4 border-[#00A4CC] pl-6 mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#003366] mb-4">Let's Ignite Growth</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-[#003366] mb-4">Let&apos;s Ignite Growth</h2>
           <p className="text-lg text-gray-600">Get in touch with our team to discuss your recruitment needs</p>
         </div>
 

@@ -76,7 +76,7 @@ export function Testimonials() {
             {/* Testimonial Content */}
             <div className="min-h-48 flex flex-col justify-center">
               <p className="text-2xl md:text-3xl text-[#003366] font-bold leading-relaxed mb-8">
-                "{testimonials[current].quote}"
+                &quot;{testimonials[current].quote}&quot;
               </p>
 
               {/* Author */}

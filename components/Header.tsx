@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { ContactForm } from '@/components/ContactForm'
+import { assetPath } from '@/lib/assetPath'
+import { routePath } from '@/lib/routePath'
 
 const navItems = [
   { label: 'Home', href: '/#home', section: '#home' },
@@ -40,7 +42,7 @@ export function Header() {
           <nav className="flex items-center justify-between h-24 pl-0 pr-4 sm:pr-6 lg:pl-0 lg:pr-8">
           <Link href="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity -ml-6">
             <img
-              src="./images/career-fusion-logo.png"
+              src={assetPath('images/career-fusion-logo.png')}
               alt="Career Fusion Consulting"
               className="h-28 md:h-32 w-auto max-w-[260px] object-contain filter brightness-90 contrast-110 saturate-110"
             />
@@ -50,7 +52,7 @@ export function Header() {
             {navItems.map((item) => (
               <Link
                 key={item.label}
-                href={item.href}
+                href={routePath(item.section)}
                 onClick={() => setHash(item.section)}
                 className={`inline-flex items-center justify-center min-w-[130px] px-6 py-3 text-sm font-semibold uppercase rounded-none transition ${
                   isActive(item.href, item.section)
@@ -106,7 +108,7 @@ export function Header() {
           {navItems.map((item) => (
             <Link
               key={item.label}
-              href={item.href}
+              href={routePath(item.section)}
               onClick={() => setHash(item.section)}
               className={`block rounded-none px-4 py-3 text-slate-700 hover:text-white hover:bg-[#00A4CC] font-medium transition ${
                 isActive(item.href, item.section) ? 'bg-[#00A4CC] text-white' : ''
