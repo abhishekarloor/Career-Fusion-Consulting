@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "export": "next build && next export",
-    "deploy": "npm run export && npx gh-pages -d out -b gh-pages",
+    "build:deploy": "cross-env NEXT_PUBLIC_BASE_PATH_DEPLOY=/Career-Fusion-Consulting npm run build",
+    "predeploy": "node -e \"require('fs').writeFileSync('out/.nojekyll','')\"",
+    "deploy": "npm run build:deploy && npm run predeploy && npx gh-pages -d out -b gh-pages -t",
     "start": "next start",
     "lint": "next lint"
   },
@@ -20,6 +21,7 @@
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "autoprefixer": "^10.4.0",
+    "cross-env": "^7.0.3",
     "eslint": "^8.50.0",
     "eslint-config-next": "^15.0.0",
     "gh-pages": "^5.0.0",

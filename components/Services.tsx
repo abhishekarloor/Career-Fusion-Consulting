@@ -1,52 +1,53 @@
 import Link from 'next/link'
 import { routePath } from '@/lib/routePath'
+import { assetPath } from '@/lib/assetPath'
 
 export function Services() {
   const services = [
     {
-      icon: '👔',
+      image: 'images/services/1.JPG',
       title: 'Executive Search',
       description: 'Targeting passive talent and high-impact leadership positions with deep-dive methodology and global network.',
       color: 'from-blue-500 to-blue-600'
     },
     {
-      icon: '📋',
+      image: 'images/services/2.JPG',
       title: 'Permanent Recruitment',
       description: 'Strategic hires for long-term growth, ensuring perfect cultural and professional fit.',
       color: 'from-purple-500 to-purple-600'
     },
     {
-      icon: '⚙️',
+      image: 'images/services/4.JPG',
       title: 'RPO Solutions',
       description: 'Full-scale recruitment process outsourcing with end-to-end talent management.',
       color: 'from-green-500 to-green-600'
     },
     {
-      icon: '🔍',
+      image: 'images/services/3.JPG',
       title: 'Talent Mapping',
       description: 'Proactive market intelligence and strategic talent identification for future needs.',
       color: 'from-orange-500 to-orange-600'
     },
     {
-      icon: '🌍',
+      image: 'images/services/5.JPG',
       title: 'Diversity & Inclusion',
       description: 'Building inclusive workplaces by connecting diverse talent across all levels.',
       color: 'from-pink-500 to-pink-600'
     },
     {
-      icon: '💡',
+      image: 'images/services/6.JPG',
       title: 'Digital First Hiring',
       description: 'Technology-enabled recruitment solutions for faster, smarter hiring decisions.',
       color: 'from-indigo-500 to-indigo-600'
     },
     {
-      icon: '🎯',
+      image: 'images/services/7.JPG',
       title: 'Leadership Hiring',
       description: 'Executive-level placements with rigorous assessment and cultural alignment.',
       color: 'from-red-500 to-red-600'
     },
     {
-      icon: '📊',
+      image: 'images/services/8.JPG',
       title: 'Research & Consulting',
       description: 'Market insights and strategic advice on talent acquisition and retention.',
       color: 'from-teal-500 to-teal-600'
@@ -86,11 +87,13 @@ export function Services() {
               {/* Color bar at top */}
               <div className={`h-2 bg-gradient-to-r ${service.color}`}></div>
 
-              {/* Icon background */}
-              <div className={`h-24 bg-gradient-to-br ${service.color} opacity-30 group-hover:opacity-50 transition-all duration-300 flex items-center justify-center`}>
-                <span className="text-5xl group-hover:scale-110 transition-transform duration-300">
-                  {service.icon}
-                </span>
+              {/* Image tile */}
+              <div className="h-32 overflow-hidden transition-all duration-300 flex items-center justify-center">
+                <img
+                  src={assetPath(service.image)}
+                  alt={service.title}
+                  className="h-full w-full object-cover object-center"
+                />
               </div>
 
               {/* Content */}

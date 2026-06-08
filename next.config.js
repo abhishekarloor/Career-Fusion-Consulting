@@ -4,10 +4,11 @@
 // module.exports = nextConfig
 /** @type {import('next').NextConfig} */
 const repoBasePath = '/Career-Fusion-Consulting'
-const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH?.trim() || (process.env.NODE_ENV === 'development' ? '' : repoBasePath)
+const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH_DEPLOY?.trim() || ''
 
 const nextConfig = {
   output: 'export',
+  outputFileTracingRoot: __dirname,
   basePath: publicBasePath,
   assetPrefix: publicBasePath,
   images: {

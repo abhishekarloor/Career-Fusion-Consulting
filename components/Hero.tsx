@@ -1,9 +1,10 @@
 import Link from 'next/link'
 import { assetPath } from '@/lib/assetPath'
+import { routePath } from '@/lib/routePath'
 
 export function Hero() {
   return (
-    <section id="home" className="relative bg-cover bg-center bg-no-repeat py-8 md:py-12 overflow-hidden min-h-[calc(100vh-80px)]" style={{backgroundImage: `url('${assetPath('images/hero-bg.jpg')}')`}}>
+    <section id="home" className="relative bg-cover bg-center bg-no-repeat py-8 md:py-12 overflow-hidden min-h-[calc(100vh-80px)] bg-slate-900" style={{backgroundImage: `url('${assetPath('images/hero-bg.jpg')}')`}}>
       {/* Dark overlay for text readability */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#003366]/70 via-[#002244]/70 to-[#003366]/70"></div>
       
@@ -26,10 +27,10 @@ export function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link href="/#services" className="inline-flex items-center justify-center bg-[#00A4CC] hover:bg-[#0088AA] text-[#003366] font-bold py-4 px-10 rounded-lg transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105 transform">
+            <Link href={routePath('#services')} className="inline-flex items-center justify-center bg-[#00A4CC] hover:bg-[#0088AA] text-[#003366] font-bold py-4 px-10 rounded-lg transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105 transform">
               Explore Our Services
             </Link>
-            <Link href="/#about" className="inline-flex items-center justify-center border-2 border-white text-white hover:bg-white hover:text-[#003366] font-bold py-4 px-10 rounded-lg transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105 transform">
+            <Link href={routePath('#about')} className="inline-flex items-center justify-center border-2 border-white text-white hover:bg-white hover:text-[#003366] font-bold py-4 px-10 rounded-lg transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105 transform">
               Learn More
             </Link>
           </div>
