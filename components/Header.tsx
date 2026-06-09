@@ -39,25 +39,25 @@ export function Header() {
   }
 
   const handleNavClick = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith('#')) {
-      // Check the actual browser pathname at runtime
-      const currentPath = typeof window !== 'undefined' ? window.location.pathname : '/'
-      const base = '/Career-Fusion-Consulting'
-      const pathWithoutBase = currentPath.startsWith(base) ? currentPath.slice(base.length) || '/' : currentPath
+    if (!href.startsWith('#')) return
+    event.preventDefault()
 
-      // If we're not on the homepage, force a full navigation so the
-      // browser lands on the exported homepage anchor correctly.
-      if (pathWithoutBase !== '/') {
-        event.preventDefault()
-        // Derive the base from the actual URL so no env var is needed
-        const detectedBase = currentPath.startsWith(base) ? base : ''
-        window.location.href = `${detectedBase}/${href}`
-        return
-      }
+    const currentPath = typeof window !== 'undefined' ? window.location.pathname : '/'
+    const base = '/Career-Fusion-Consulting'
+    const pathWithoutBase = currentPath.startsWith(base) ? currentPath.slice(base.length) || '/' : currentPath
 
-      // Otherwise, just update local hash state for client-side highlighting
-      setHash(href)
+    if (pathWithoutBase !== '/') {
+      // On a sub-page: navigate to homepage with the anchor
+      const detectedBase = currentPath.startsWith(base) ? base : ''
+      window.location.href = `${detectedBase}/${href}`
+      return
     }
+
+    // On homepage: scroll to the section directly — reliable across all environments
+    const sectionId = href.slice(1)
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
+    window.history.pushState(null, '', href)
+    setHash(href)
   }
 
   return (
@@ -78,10 +78,7 @@ export function Header() {
               <Link
                 key={item.label}
                 href={routePath(item.href)}
-                onClick={(event) => {
-                  handleNavClick(event, item.href)
-                  setHash(item.section)
-                }}
+                onClick={(event) => handleNavClick(event, item.href)}
                 className={`inline-flex items-center justify-center min-w-[130px] px-6 py-3 text-sm font-semibold uppercase rounded-none transition ${
                   isActive(item.href, item.section)
                     ? 'bg-[#00A4CC] text-white shadow-sm ring-1 ring-[#00A4CC]'
@@ -98,13 +95,13 @@ export function Header() {
                 <span className="text-[10px] leading-none">▾</span>
               </button>
               <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 absolute left-0 top-full mt-3 w-52 rounded-none border border-[#00A4CC]/30 bg-white shadow-lg py-2">
-                <Link href={routePath('#about')} className="block rounded-none px-4 py-3 text-sm font-semibold uppercase text-slate-700 hover:bg-[#00A4CC] hover:text-white transition">
+                <Link href={routePath('#about')} onClick={(e) => handleNavClick(e, '#about')} className="block rounded-none px-4 py-3 text-sm font-semibold uppercase text-slate-700 hover:bg-[#00A4CC] hover:text-white transition">
                   About Career Fusion
                 </Link>
                 <Link href="/our-leadership" className="block rounded-none px-4 py-3 text-sm font-semibold uppercase text-slate-700 hover:bg-[#00A4CC] hover:text-white transition">
                   Our Leadership
                 </Link>
-                <Link href={routePath('#testimonials')} className="block rounded-none px-4 py-3 text-sm font-semibold uppercase text-slate-700 hover:bg-[#00A4CC] hover:text-white transition">
+                <Link href={routePath('#testimonials')} onClick={(e) => handleNavClick(e, '#testimonials')} className="block rounded-none px-4 py-3 text-sm font-semibold uppercase text-slate-700 hover:bg-[#00A4CC] hover:text-white transition">
                   Partner Testimonials
                 </Link>
               </div>
@@ -137,10 +134,7 @@ export function Header() {
             <Link
               key={item.label}
               href={routePath(item.href)}
-              onClick={(event) => {
-                handleNavClick(event, item.href)
-                setHash(item.section)
-              }}
+              onClick={(event) => handleNavClick(event, item.href)}
               className={`block rounded-none px-4 py-3 text-slate-700 hover:text-white hover:bg-[#00A4CC] font-medium transition ${
                 isActive(item.href, item.section) ? 'bg-[#00A4CC] text-white' : ''
               }`}
@@ -150,13 +144,13 @@ export function Header() {
           ))}
           <div className="border-t border-slate-100 pt-3">
             <div className="text-slate-900 font-semibold mb-2">About Us</div>
-            <Link href={routePath('#about')} className="block rounded-none px-4 py-3 text-sm font-semibold text-slate-700 border border-transparent hover:text-white hover:bg-[#00A4CC] hover:border-[#00A4CC] transition">
+            <Link href={routePath('#about')} onClick={(e) => handleNavClick(e, '#about')} className="block rounded-none px-4 py-3 text-sm font-semibold text-slate-700 border border-transparent hover:text-white hover:bg-[#00A4CC] hover:border-[#00A4CC] transition">
               About Career Fusion
             </Link>
             <Link href="/our-leadership" className="block rounded-none px-4 py-3 text-sm font-semibold text-slate-700 border border-transparent hover:text-white hover:bg-[#00A4CC] hover:border-[#00A4CC] transition">
               Our Leadership
             </Link>
-            <Link href={routePath('#testimonials')} className="block rounded-none px-4 py-3 text-sm font-semibold text-slate-700 border border-transparent hover:text-white hover:bg-[#00A4CC] hover:border-[#00A4CC] transition">
+            <Link href={routePath('#testimonials')} onClick={(e) => handleNavClick(e, '#testimonials')} className="block rounded-none px-4 py-3 text-sm font-semibold text-slate-700 border border-transparent hover:text-white hover:bg-[#00A4CC] hover:border-[#00A4CC] transition">
               Partner Testimonials
             </Link>
           </div>
