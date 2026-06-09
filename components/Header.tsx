@@ -40,6 +40,22 @@ export function Header() {
 
   const handleNavClick = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith('#')) {
+      // Check the actual browser pathname at runtime
+      const currentPath = typeof window !== 'undefined' ? window.location.pathname : '/'
+      const base = '/Career-Fusion-Consulting'
+      const pathWithoutBase = currentPath.startsWith(base) ? currentPath.slice(base.length) || '/' : currentPath
+
+      // If we're not on the homepage, force a full navigation so the
+      // browser lands on the exported homepage anchor correctly.
+      if (pathWithoutBase !== '/') {
+        event.preventDefault()
+        // Derive the base from the actual URL so no env var is needed
+        const detectedBase = currentPath.startsWith(base) ? base : ''
+        window.location.href = `${detectedBase}/${href}`
+        return
+      }
+
+      // Otherwise, just update local hash state for client-side highlighting
       setHash(href)
     }
   }
@@ -161,7 +177,7 @@ export function Header() {
 
       {isModalOpen && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-slate-900/70 p-4">
-          <div className="w-full max-w-2xl max-h-[calc(100vh-4rem)] rounded-3xl bg-white shadow-2xl overflow-hidden">
+          <div className="w-full max-w-2xl rounded-3xl bg-white shadow-2xl overflow-hidden">
             <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4">
               <div>
                 <p className="text-sm uppercase font-semibold tracking-[0.2em] text-[#00A4CC]">Contact Us</p>

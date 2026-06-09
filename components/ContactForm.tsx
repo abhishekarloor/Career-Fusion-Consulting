@@ -70,7 +70,7 @@ export function ContactForm({ onClose }: ContactFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-3">
       <div>
         <label className="block text-sm font-semibold text-[#003366] mb-1">Full Name</label>
         <input
@@ -79,7 +79,7 @@ export function ContactForm({ onClose }: ContactFormProps) {
           value={formData.name}
           onChange={handleChange}
           required
-          className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00A4CC]"
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00A4CC]"
           placeholder="Your name"
         />
       </div>
@@ -91,7 +91,7 @@ export function ContactForm({ onClose }: ContactFormProps) {
           value={formData.email}
           onChange={handleChange}
           required
-          className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00A4CC]"
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00A4CC]"
           placeholder="your.email@example.com"
         />
       </div>
@@ -102,8 +102,8 @@ export function ContactForm({ onClose }: ContactFormProps) {
           name="phone"
           value={formData.phone}
           onChange={handleChange}
-          className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00A4CC]"
-          placeholder="+91 XXXXX XXXXX"
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00A4CC]"
+          placeholder="+91 9663479949"
         />
       </div>
       <div>
@@ -112,8 +112,8 @@ export function ContactForm({ onClose }: ContactFormProps) {
           name="enquiry"
           value={formData.enquiry}
           onChange={handleChange}
-          rows={3}
-          className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00A4CC]"
+          rows={2}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00A4CC]"
           placeholder="Tell us about your recruitment needs..."
         ></textarea>
       </div>
